@@ -13,7 +13,7 @@ from service.service.CourseService import CourseService
 from datetime import datetime
 from django.utils.dateparse import parse_date
 
-class AddFacultyCtl(BaseCtl):
+class FacultyCtl(BaseCtl):
     def preload(self,request):
         self.course_List = CourseService().search(self.form)
         self.college_List = CollegeService().search(self.form)

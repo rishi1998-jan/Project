@@ -90,7 +90,7 @@ class TimeTableCtl(BaseCtl):
         #     self.form["error"] = True
 
         if(DataValidator.isNull(self.form["course_ID"])):
-            inputError["course_ID"] = "course_ID can not be null"
+            inputError["course_ID"] = "course Name can not be null"
             self.form["error"] = True
 
         # if(DataValidator.isNull(self.form["courseName"])):

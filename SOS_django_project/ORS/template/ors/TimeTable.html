@@ -64,9 +64,11 @@
                             <select class="form-control" name="course_ID">
                                 <option>--Select--</option>
                                 {% for form in courseList %}
-                               <option value="{{form.id}}">{{form.courseName}}</option>
+                               <option value="{{form.id}}">{{form.course_ID}}</option>
                                 {% endfor %}
                             </select>
+
+                            <span style="color: red;"> {{form.inputError.courseName}} </span>
                 
                     </div>
  

@@ -11,12 +11,8 @@ class UserService(BaseService):
 
     def authenticate(self,params):
         userList = self.search(params) 
-        if (userList.count() > 0):
-            for userData in userList:
-                print("-----------------llll--------->",params['login_id'],"         --",userData.login_id)
-                if(params['login_id']==userData.login_id):
-                    #print("-----------------llll--------->",userData)
-                    return userData
+        if (userList.count() == 1):
+            return userList[0]
         else:
             return None
      
@@ -39,15 +35,21 @@ class UserService(BaseService):
         val = params.get("login_id",None)
         if( DataValidator.isNotNull(val)):
             q= q.filter( login_id = val)
+            
 
         val = params.get("password",None)
         if( DataValidator.isNotNull(val)):
             q= q.filter( password = val)
+           
 
         return q
-    def get_login_id(self,login_id):
-        self.get_model().objects.all()
 
+    def get_login_id(self,login):
+        q = self.get_model().objects.filter()
+        if( DataValidator.isNotNull(login)):
+            q= q.filter( login_id = login)           
+        return q
+        
 
 
     def get_model(self):

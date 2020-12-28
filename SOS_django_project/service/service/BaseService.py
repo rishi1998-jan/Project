@@ -6,34 +6,34 @@ class BaseService(ABC):
     def __init__(self):
         print("0")
 
-    def get(self, rid):
+    def get(self, pk):
         try:
-            r = self.get_model().objects.get( id = rid )
-            return r
+            m = self.get_model().objects.get( id = pk )
+            return m
         except self.get_model().DoesNotExist :
             return None
 
     def search(self):
         try:
-            r = self.get_model().objects.all()
-            return r
+            m = self.get_model().objects.all()
+            return m
         except self.get_model().DoesNotExist :
             return None
 
-    def save(self,role):
-        if(role.id == 0):
-            role.id = None
-        role.save()
+    def save(self,mObj):
+        if(mObj.id == 0): 
+            mObj.id = None
+        mObj.save()
         
        
-    def delete(self,rid):
-        r = self.get(rid)
-        r.delete()       
+    def delete(self,mid):
+        m = self.get(mid)
+        m.delete()       
 
-    def find_by_unique_key(self, rid):
+    def find_by_unique_key(self, pk):
         try:
-            r = self.get_model().objects.get( id = rid )
-            return r
+            m = self.get_model().objects.get( id = pk )
+            return m
         except self.get_model().DoesNotExist :
             return None
 

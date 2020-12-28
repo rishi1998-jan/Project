@@ -44,3 +44,9 @@ class TimeTableSerializers(serializers.ModelSerializer):
     class Meta:  
         model = TimeTable  
         fields = ['examTime','examDate','subject_ID','subjectName',' course_ID','courseName','semester']                        
+
+
+class AddFacultySerializers(serializers.ModelSerializer):  
+    class Meta:  
+        model = Faculty  
+        fields = ['firstName','lastName','email','password',' address','gender','dob','college_ID','subject_ID','course_ID']                        

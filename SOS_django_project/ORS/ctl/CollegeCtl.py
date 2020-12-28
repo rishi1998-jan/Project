@@ -14,6 +14,7 @@ class CollegeCtl(BaseCtl):
          
     # Populate Form from HTTP Request
     def request_to_form(self, requestForm):
+        print("request to form")
         self.form["id"] = requestForm["id"]
         self.form["collegeName"] = requestForm["collegeName"]
         self.form["collegeAddress"] = requestForm["collegeAddress"]
@@ -25,6 +26,7 @@ class CollegeCtl(BaseCtl):
     def model_to_form(self, obj):
         if (obj == None):
             return
+        print("model to form")    
         self.form["id"] = obj.id
         self.form["collegeName"] = obj.collegeName
         self.form["collegeAddress"] = obj.collegeAddress
@@ -37,6 +39,7 @@ class CollegeCtl(BaseCtl):
         pk = int(self.form["id"])
         if (pk > 0):
             obj.id= pk
+        print("form to model")    
         obj.collegeName = self.form["collegeName"]
         obj.collegeAddress = self.form["collegeAddress"]
         obj.collegeState = self.form["collegeState"]

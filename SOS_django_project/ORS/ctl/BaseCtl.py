@@ -25,8 +25,7 @@ class BaseCtl(ABC):
         self.form["message"] = ""
         self.form["error"] = False
         self.form["inputError"] = {}
-        self.pageSize=10
-        self.pageNum=1
+        
 
     '''
     It loads preload data of the page 
@@ -48,7 +47,7 @@ class BaseCtl(ABC):
             self.request_to_form(request.POST)
             if(self.input_validation()):
                 return render(request,self.get_template(),{"form":self.form,}) 
-                # "roleList":self.preloadData
+                
             else:
                 if(request.POST.get("operation")=="Delete"):
                     return self.deleteRecord(request,params)
@@ -58,9 +57,7 @@ class BaseCtl(ABC):
             message = "Request is not supported"
             return HttpResponse(message)          
     
-    def deleteRecord(self,request, params = {}):
-        pass
-
+   
     '''
     delete rceord of received ID    
     '''

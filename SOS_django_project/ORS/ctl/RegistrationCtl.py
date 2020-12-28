@@ -2,7 +2,7 @@
 
 
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect 
 from django.http import HttpResponse
 from .BaseCtl import BaseCtl
 from service.utility.DataValidator import DataValidator
@@ -120,9 +120,9 @@ class RegistrationCtl(BaseCtl):
 
     #Submit Role page 
     def submit(self,request,params={}):
-        q = User.objects.filter()
-        q= q.filter( login_id = self.form["login_id"]) 
-        if(q.count()>0):
+        duplicat=self.get_service().get_login_id(self.form["login_id"])
+
+        if(duplicat.count()>0):
             self.form["error"] = True
             self.form["message"] = "User is already exist, Please register with another mail id"
             res = render(request,self.get_template(),{"form":self.form})            

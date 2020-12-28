@@ -110,6 +110,28 @@ class Faculty(models.Model):
     subjectName = models.CharField(max_length=50) 
     course_ID=models.IntegerField() 
     courseName = models.CharField(max_length=50)
+
+    def to_json(self):
+        data={
+        "id":self.id,
+        "firstName":self.firstName,
+        "lastName":self.lastName,
+        "email":self.email,
+        "password":self.password,
+        "mobileNumber":self.mobileNumber,
+        "address":self.address,
+        "gender":self.gender,
+        "dob":self.dob,
+        "college_ID":self.college_ID,
+        "collegeName":self.collegeName,
+        "subject_ID":self.subject_ID,
+        "subjectName":self.subjectName,
+        "course_ID":self.course_ID,
+        "courseName":self.courseName
+    
+        }
+        return data
+
     class Meta:  
         db_table = "SOS_FACULTY"
           
@@ -169,7 +191,7 @@ class Subject(models.Model):
        "id":self.id,
        "subjectName":self.subjectName,
        "subjectDescription":self.subjectDescription,
-       "dob":self.dob,
+    #    "dob":self.dob,
        "course_ID":self.course_ID,
        "courseName":self.courseName
         }

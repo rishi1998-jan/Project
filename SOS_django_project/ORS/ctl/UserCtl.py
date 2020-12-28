@@ -8,6 +8,8 @@ from .BaseCtl import BaseCtl
 from service.models import User
 from service.service.UserService import UserService
 from service.service.RoleService import RoleService
+from service.service.EmailService import EmailService
+from service.service.EmailMessage import EmailMessage
 from datetime import datetime
 from django.utils.dateparse import parse_date
 
@@ -58,10 +60,7 @@ class UserCtl(BaseCtl):
         c = RoleService().get(self.form["role_Id"])
         pk = int(self.form["id"])
         newdate=""
-        # if(self.form["dob"]):
-        #     formDate=self.form["dob"].replace("/", "-")
-        #     newdate=datetime.strptime(formDate,'%d-%m-%Y').strftime('%Y-%m-%d')
-        
+       
         if(pk>0): 
             obj.id = pk
         obj.firstName = self.form["firstName"]
@@ -127,15 +126,35 @@ class UserCtl(BaseCtl):
         res = render(request,self.get_template(), {"form":self.form,"roleList":self.preloadData})
         return res
 
-    #Submit Role page
+   
     def submit(self,request,params={}):
-        r = self.form_to_model(User())
-        self.get_service().save(r)
-        self.form["id"] = r.id
-        self.form["error"] = False
-        self.form["message"] = "Data is successfully saved "
-        res = render(request,self.get_template(),{"form":self.form})
-        return res
+        duplicat=self.get_service().get_login_id(self.form["login_id"])
+
+        if(duplicat.count()>0):
+            self.form["error"] = True
+            self.form["message"] = "User is already exist, Please register with another mail id"
+            res = render(request,self.get_template(),{"form":self.form})            
+        else:
+            user = request.session.get("user",None)
+            emsg=EmailMessage()
+            emsg.to= [self.form["login_id"]]
+            e={}
+            e["login"]= self.form["login_id"]
+            e["password"]=self.form["password"]
+            emsg.subject= "ORS Registration Successful"    
+            mailResponse=EmailService.send(emsg,"signUp",e)           
+            if(mailResponse==1):
+                r = self.form_to_model(User())
+                self.get_service().save(r)
+                self.form["id"] = r.id
+                self.form["error"] = False
+                self.form["message"] = "You have registered successfully"
+                res = render(request,self.get_template(),{"form":self.form})
+            else:
+                self.form["error"] = True
+                self.form["message"] = "Please Check Your Internet Connection"
+                res = render(request,self.get_template(),{"form":self.form})
+        return res 
 
     def get_template(self):
         return "ors/User.html"  

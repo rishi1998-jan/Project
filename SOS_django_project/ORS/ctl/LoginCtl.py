@@ -28,8 +28,7 @@ class LoginCtl(BaseCtl):
         res = render(request,self.get_template())
         return res
 
-    def submit(self,request,params={}):
-        
+    def submit(self,request,params={}):    
         if(self.input_validation()):
             return render(request,self.get_template(),{"form":self.form})
         else:     
@@ -37,9 +36,6 @@ class LoginCtl(BaseCtl):
             if(user is None):
                 self.form["message"] = "Invalid ID or Password"
                 res = render(request,self.get_template(),{"form":self.form})
-            # elif(password != password):
-            #      self.form["message"] = "Password is Invalid"  
-            #      res = render(request,self.get_template(),{"form":self.form})  
             else:
                 request.session["user"] = user
                 self.form["message"] = "LOGIN SUCCESSFULLY"

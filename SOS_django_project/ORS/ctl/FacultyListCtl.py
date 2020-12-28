@@ -8,7 +8,7 @@ from service.models import Faculty
 from service.forms import FacultyForm
 from service.service.AddFacultyService import AddFacultyService
 
-class AddFacultyListCtl(BaseCtl):
+class FacultyListCtl(BaseCtl):
          
     # Populate Form from HTTP Request
     def request_to_form(self, requestForm):

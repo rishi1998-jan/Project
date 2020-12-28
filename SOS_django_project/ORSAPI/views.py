@@ -19,6 +19,9 @@ from ORSAPI.restctl.SubjectCtl import SubjectCtl
 from ORSAPI.restctl.SubjectListCtl import SubjectListCtl
 from ORSAPI.restctl.TimeTableCtl import TimeTableCtl
 from ORSAPI.restctl.TimeTableListCtl import TimeTableListCtl
+from ORSAPI.restctl.AddFacultyCtl import AddFacultyCtl
+from ORSAPI.restctl.AddFacultyListCtl import AddFacultyListCtl
+
 from ORSAPI.restctl.LoginCtl import LoginCtl
 
 from django.views.decorators.csrf import csrf_exempt

@@ -1,5 +1,5 @@
 
-
+ 
 
 from django.http import HttpResponse
 from .BaseCtl import BaseCtl
@@ -75,7 +75,7 @@ class UserCtl():
         obj.role_Name = request["role_Name"]
         return obj
 
-    def save(self,request, params = {}):        
+    def save(self,request, params = {}):         
         json_request=json.loads(request.body)     
         r=self.form_to_model(User(), json_request)
         service=UserService()
@@ -89,6 +89,7 @@ class UserCtl():
             res["error"]=True
             res["message"]="Data is not saved"
         return JsonResponse({"data":res})
+    
 
     # Template html of Role page    
     def get_template(self):
