@@ -31,7 +31,7 @@ class BaseCtl(ABC):
     It loads preload data of the page 
     '''
     def preload(self,request):
-        print("This is preload")
+       pass
 
     '''
     execute method is executed for each HTTP request.  
@@ -39,7 +39,7 @@ class BaseCtl(ABC):
     HTTP GET and HTTP POST methods 
     '''
     def execute(self,request, params = {}):
-        print("This is execute")
+        # print("This is execute")
         self.preload(request)
         if("GET" ==  request.method):
             return self.display(request, params) 

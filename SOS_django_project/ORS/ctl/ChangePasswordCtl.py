@@ -75,7 +75,7 @@ class ChangePasswordCtl(BaseCtl):
                 emgs.to=[user.login_id]
                 emgs.subject="Change Password"
                 mailResponse=EmailService.send(emgs,"changePassword",user)
-                print("-------------------->>>>",mailResponse)
+                
                 if(mailResponse==1):
                     convertUser=self.convert(user,user.id,self.form["newPassword"])
                     UserService().save(convertUser)

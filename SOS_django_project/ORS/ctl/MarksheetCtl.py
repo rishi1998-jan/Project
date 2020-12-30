@@ -23,7 +23,7 @@ class MarksheetCtl(BaseCtl):
         self.form["physics"] = requestForm["physics"]
         self.form["chemistry"] = requestForm["chemistry"]
         self.form["maths"] = requestForm["maths"]
-        # self.form["student_ID"] = requestForm["student_ID"]
+        
 
     #Populate Form from Model 
     def model_to_form(self,obj):
@@ -35,11 +35,11 @@ class MarksheetCtl(BaseCtl):
         self.form["physics"] = obj.physics
         self.form["chemistry"] = obj.chemistry
         self.form["maths"] = obj.maths
-        # self.form["student_ID"] = obj.student_ID
+      
 
     #Convert form into module
     def form_to_model(self,obj):
-        # c = MarksheetService().get(self.form["student_ID"])
+       
         pk = int(self.form["id"])
         if(pk>0):
             obj.id = pk
@@ -48,8 +48,7 @@ class MarksheetCtl(BaseCtl):
         obj.physics=self.form["physics"] 
         obj.chemistry=self.form["chemistry"] 
         obj.maths=self.form["maths"] 
-        # obj.student_ID=self.form["student_ID"]
-        # obj.firstName=e.firstName
+       
         return obj
 
     #Validate form 
@@ -74,9 +73,7 @@ class MarksheetCtl(BaseCtl):
         if(DataValidator.isNull(self.form["maths"])):
             inputError["maths"] = "maths can not be null"
             self.form["error"] = True
-        # if(DataValidator.isNull(self.form["student_ID"])):
-        #     inputError["student_ID"] = "student_ID can not be null"
-        #     self.form["error"] = True
+       
 
         return self.form["error"]        
 

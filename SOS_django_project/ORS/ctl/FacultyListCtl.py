@@ -12,12 +12,12 @@ class FacultyListCtl(BaseCtl):
          
     # Populate Form from HTTP Request
     def request_to_form(self, requestForm):
-        # self.form["id"] = requestForm.get("id", None)
+        
         self.form["firstName"] = requestForm.get("firstName", None)
         self.form["lastName"] = requestForm.get("lastName", None)
         self.form["email"] = requestForm.get("email", None)
         self.form["password"] = requestForm.get("password", None)
-        # self.form["mobileNumber"] = requestForm.get("mobileNumber", None)
+       
         self.form["address"] = requestForm.get("address", None)
         self.form["gender"] = requestForm.get("gender", None)
         self.form["dob"] = requestForm.get("dob", None)
@@ -57,12 +57,12 @@ class FacultyListCtl(BaseCtl):
         self.page_list = self.get_service().search(self.form)
         res = render(request,self.get_template(),{"pageList":self.page_list})
         if(bool(self.form["ids"])==False):
-            print("qqqaaaaaaaaaaaaaaaaaaaaaaqqqqqqq")
+           
             self.form["error"] = True
             self.form["message"] = "Please Select at least one check box"
             res = render(request,self.get_template(),{"pageList":self.page_list,"form":self.form})
         else:
-            print("qqqqqqqqqq-----------------------------")
+           
             for ids in self.form["ids"]:
                 self.page_list = self.get_service().search(self.form)
                 id=int(ids)

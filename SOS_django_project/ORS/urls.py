@@ -19,19 +19,15 @@ from . import views
 
 urlpatterns = [
   
-    #delete 
-    #/ORS/User/get
-    #/ORS/User/search
+    
     path('auth/<page>/', views.auth),  
-    path('<page>/<action>/', views.action),    
+    # path('<page>/<action>/', views.action),    
       
 
-    #/ORS/User/1
-    #/ORS/Account/1
+   
     path('<page>/<operation>/<int:id>', views.actionId),       
 
-    #/ORS/Login
-    #/ORS/ChangePassword 
+   
     path('<page>/', views.actionId), 
     path('',views.index),
   

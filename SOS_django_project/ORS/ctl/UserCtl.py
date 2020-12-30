@@ -73,7 +73,7 @@ class UserCtl(BaseCtl):
         obj.gender = self.form["gender"]
         obj.mobilenumber = self.form["mobilenumber"]
         obj.role_Id = self.form["role_Id"]
-        #obj.role_Name = self.form["role_Name"]
+        
         obj.role_Name=c.name
         return obj
 
@@ -112,9 +112,7 @@ class UserCtl(BaseCtl):
         if(DataValidator.isNull(self.form["mobilenumber"])):
             inputError["mobilenumber"] = "mobileNumber can not be null"
             self.form["error"] = True
-        # if(DataValidator.isNull(self.form["role_Name"])):
-        #     inputError["role_Name"] = "role_Name can not be null"
-        #     self.form["error"] = True
+      
       
         return self.form["error"]        
 

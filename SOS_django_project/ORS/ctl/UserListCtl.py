@@ -26,14 +26,7 @@ class UserListCtl(BaseCtl):
     def display(self,request,params={}):
         self.page_list = self.get_service().search(self.form)
         user_list = self.get_service().search(self.form)
-        page = request.GET.get('page', 1)
-        paginator = Paginator(user_list, 5)
-        try:
-            self.page_list = paginator.page(page)
-        except PageNotAnInteger:
-            self.page_list = paginator.page(1)
-        except EmptyPage:
-            self.page_list = paginator.page(paginator.num_pages)
+        
         res = render(request,self.get_template(),{"pageList":self.page_list})
         return res
 
@@ -41,12 +34,12 @@ class UserListCtl(BaseCtl):
         self.page_list = self.get_service().search(self.form)
         res = render(request,self.get_template(),{"pageList":self.page_list})
         if(bool(self.form["ids"])==False):
-            print("qqqaaaaaaaaaaaaaaaaaaaaaaqqqqqqq")
+           
             self.form["error"] = True
             self.form["message"] = "Please Select at least one check box"
             res = render(request,self.get_template(),{"pageList":self.page_list,"form":self.form})
         else:
-            print("qqqqqqqqqq-----------------------------")
+           
             for ids in self.form["ids"]:
                 self.page_list = self.get_service().search(self.form)
                 id=int(ids)

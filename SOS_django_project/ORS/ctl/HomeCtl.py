@@ -8,7 +8,7 @@ from django.shortcuts import render
 class HomeCtl(BaseCtl):
 
     def display(self,request,params={}):
-        print('---------------------->')
+       
         return render(request,self.get_template())
 
     def submit(self,request,params={}):

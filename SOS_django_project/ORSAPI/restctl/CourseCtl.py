@@ -42,24 +42,7 @@ class CourseCtl(BaseCtl):
             res["message"]="Data is not deleted"
         return JsonResponse({"data":res["data"]})
 
-    # def search(self,request, params = {}):
-    #     print("my name is mohit")
-    #     service=CourseService()
-    #     json_request=json.loads(request.body)     
-    #     self.request_to_form(json_request)
-    #     c=service.search(self.form)
-    #     res={}
-    #     data=[]
-    #     for x in c:
-    #         data.append(x.to_json())
-    #     if(c!=None):
-    #         res["data"]=data
-    #         res["error"]=False
-    #         res["message"]="Data is found"
-    #     else:
-    #         res["error"]=True
-    #         res["message"]="record not found"
-    #     return JsonResponse({"data":res})
+    
 
     def search(self,request, params = {}):
             print("my name is mohit")

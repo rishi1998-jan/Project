@@ -17,7 +17,7 @@ class WelcomeCtl(BaseCtl):
         
         if(user is not None):  
             self.form["message"] = "Welcome" + "to"+user.role_Name + "--" + user.firstName +user.lastName +"--"+(user.login_id)
-            # self.form["message"] = "Welcome" + user.firstName 
+          
             
         return render(request,self.get_template(),{"form":self.form})
 

@@ -18,16 +18,14 @@ class SubjectCtl(BaseCtl):
         self.page_list = CourseService().search(self.form)
         self.preload_data=self.page_list
 
-    #     #Populate Form from HTTP Request 
+  
     def request_to_form(self,requestForm):
         self.form["id"]  = requestForm["id"]
         self.form["subjectName"] = requestForm["subjectName"]
         self.form["subjectDescription"] = requestForm["subjectDescription"]
-        # self.form["dob"] = requestForm["dob"]
+       
         self.form["course_ID"] = requestForm["course_ID"]
-        # self.form["courseName"] = requestForm["courseName"]
-        # self.form["college_ID"] = requestForm["college_ID"]
-        # self.form["collegeName"] = requestForm["collegeName"]
+       
 
     #Populate Form from Model 
     def model_to_form(self,obj):
@@ -36,11 +34,9 @@ class SubjectCtl(BaseCtl):
         self.form["id"]  = obj.id
         self.form["subjectName"] =obj.subjectName
         self.form["subjectDescription"] = obj.subjectDescription
-        # self.form["dob"] =obj.dob
+       
         self.form["course_ID"] =obj.course_ID
-        # self.form["courseName"] =obj.courseName
-        # self.form["college_ID"] = obj.college_ID
-        # self.form["collegeName"] = obj.collegeName
+        
 
     #Convert form into module
     def form_to_model(self,obj):
@@ -50,11 +46,9 @@ class SubjectCtl(BaseCtl):
             obj.id = pk
         obj.subjectName=self.form["subjectName"]
         obj.subjectDescription=self.form["subjectDescription"] 
-        # obj.dob=self.form["dob"] 
+       
         obj.course_ID=self.form["course_ID"] 
-        # obj.courseName=self.form["courseName"]  
-        # obj.college_ID=self.form["college_ID"] 
-        # obj.collegeName=self.form["collegeName"] 
+       
         obj.courseName=c.courseName
         return obj
 
@@ -70,25 +64,13 @@ class SubjectCtl(BaseCtl):
             inputError["subjectDescription"] = "subjectDescription can not be null"
             self.form["error"] = True
 
-        # if(DataValidator.isNull(self.form["dob"])):
-        #     inputError["dob"] = "dob can not be null"
-        #     self.form["error"] = True 
+       
 
         if(DataValidator.isNull(self.form["course_ID"])):
             inputError["course_ID"] = "course_ID can not be null"
             self.form["error"] = True
 
-        # if(DataValidator.isNull(self.form["courseName"])):
-        #     inputError["courseName"] = "courseName can not be null"
-        #     self.form["error"] = True
-
-        # if(DataValidator.isNull(self.form["college_ID"])):
-        #     inputError["college_ID"] = "college_ID can not be null"
-        #     self.form["error"] = True
-
-        # if(DataValidator.isNull(self.form["collegeName"])):
-        #     inputError["collegeName"] = "college_Name can not be null"
-        #     self.form["error"] = True
+       
 
         return self.form["error"]        
 

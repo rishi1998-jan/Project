@@ -59,48 +59,11 @@ class AddFacultyCtl(BaseCtl):
         return JsonResponse({"data":res})
 
 
-    # def search(self,request, params = {}):
-    #     q = College.objects.filter()
-    #     json_request=json.loads(request.body)
-    #     if(json_request.get("collegeName")!=None ):
-    #         q= q.filter( collegeName = json_request.get("collegeName"))  
-    #     if(json_request.get("collegeName")!=None ):
-    #         q= q.filter( collegeName = json_request.get("collegeName"))
-        
-    #     res={}
-    #     data=[]
-    #     for x in q:
-    #         data.append(x.to_json())
-    #     if(q!=None):
-    #         res["data"]=data
-    #         res["error"]=False
-    #         res["message"]="Data is found"
-    #     else:
-    #         res["error"]=True
-    #         res["message"]="record not found"
-    #     return JsonResponse({"data":res})
+   
 
 
 
-
-    # def search(self,request, params = {}):
-        # json_request=json.loads(request.body)
-        # params["collegeName"]=json_request["collegeName"]
-        # params["collegeName"]=json_request["collegeName"]
-        # service=CollegeService()
-        # c=service.search(params)
-        # res={}
-        # data=[]
-        # for x in c:
-        #     data.append(x.to_json())
-        # if(c!=None):
-        #     res["data"]=data
-        #     res["error"]=False
-        #     res["message"]="Data is found"
-        # else:
-        #     res["error"]=True
-        #     res["message"]="record not found"
-        # return JsonResponse({"data":res})
+   
 
     def search(self,request, params = {}):
             service=AddFacultyService()

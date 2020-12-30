@@ -24,7 +24,7 @@ class AddFacultyListCtl(BaseCtl):
         self.form["college_ID"] =  requestForm.get( "college_ID", None) 
         self.form["subject_ID"] =  requestForm.get( "subject_ID", None) 
         self.form["course_ID"] =  requestForm.get( "course_ID", None) 
-        # self.form["address"] =  requestForm.get( "address", None) 
+       
    
 
     def display(self,request,params={}):

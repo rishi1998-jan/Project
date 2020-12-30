@@ -27,12 +27,12 @@ class TimeTableCtl(BaseCtl):
             newdate=datetime.strptime(formDate,'%d-%m-%Y').strftime('%Y-%m-%d')
         self.form["id"]  = requestForm["id"]
         self.form["examTime"] = requestForm["examTime"]
-        # self.form["examDate"] = requestForm["examDate"]
+        
         self.form["examDate"] =newdate
         self.form["subject_ID"] = requestForm["subject_ID"]
-        # self.form["subjectName"] = requestForm["subjectName"]
+      
         self.form["course_ID"] = requestForm["course_ID"]
-        # self.form["courseName"] = requestForm["courseName"]
+       
         self.form["semester"] = requestForm["semester"]
 
     #Populate Form from Model 
@@ -43,9 +43,9 @@ class TimeTableCtl(BaseCtl):
         self.form["examTime"] =obj.examTime
         self.form["examDate"] = obj.examDate
         self.form["subject_ID"] =obj.subject_ID
-        # self.form["subjectName"] =obj.subjectName
+        
         self.form["course_ID"] =obj.course_ID
-        # self.form["courseName"] = obj.courseName
+        
         self.form["semester"] = obj.semester
 
     #Convert form into module
@@ -61,9 +61,9 @@ class TimeTableCtl(BaseCtl):
         obj.examTime=self.form["examTime"]
         obj.examDate=self.form["examDate"] 
         obj.subject_ID=self.form["subject_ID"] 
-        # obj.subjectName=self.form["subjectName"] 
+        
         obj.course_ID=self.form["course_ID"] 
-        # obj.courseName=self.form["courseName"] 
+      
         obj.semester=self.form["semester"] 
         obj.courseName=c.courseName
         obj.subjectName=s.subjectName
@@ -85,18 +85,13 @@ class TimeTableCtl(BaseCtl):
             inputError["subject_ID"] = "subject_ID can not be null"
             self.form["error"] = True
 
-        # if(DataValidator.isNull(self.form["subjectName"])):
-        #     inputError["subjectName"] = "subjectName can not be null"
-        #     self.form["error"] = True
+        
 
         if(DataValidator.isNull(self.form["course_ID"])):
             inputError["course_ID"] = "course Name can not be null"
             self.form["error"] = True
 
-        # if(DataValidator.isNull(self.form["courseName"])):
-        #     inputError["courseName"] = "courseName can not be null"
-        #     self.form["error"] = True
-
+       
         if(DataValidator.isNull(self.form["semester"])):
             inputError["semester"] = "semester can not be null"
             self.form["error"] = True

@@ -11,7 +11,7 @@ It contains Role business logics.
 class CollegeService(BaseService):
 
     def search(self, params):
-        print("```````````````````222",params)
+       
       
         q = self.get_model().objects.filter()
 

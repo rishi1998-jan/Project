@@ -14,9 +14,9 @@ class TimeTableListCtl(BaseCtl):
         self.form["examTime"]=requestForm.get("examTime",None)
         self.form["examDate"]=requestForm.get("examDate",None)
         self.form["subject_ID"]=requestForm.get("subject_ID",None)
-        # self.form["subjectName"]=requestForm.get("subjectName",None)
+       
         self.form["course_ID"]=requestForm.get("course_ID",None)
-        # self.form["courseName"]=requestForm.get("courseName",None)
+       
         self.form["semester"]=requestForm.get("semester",None)
         self.form["ids"]= requestForm.getlist( "ids", None)
 
@@ -42,12 +42,12 @@ class TimeTableListCtl(BaseCtl):
         self.page_list = self.get_service().search(self.form)
         res = render(request,self.get_template(),{"pageList":self.page_list})
         if(bool(self.form["ids"])==False):
-            print("qqqaaaaaaaaaaaaaaaaaaaaaaqqqqqqq")
+           
             self.form["error"] = True
             self.form["message"] = "Please Select at least one check box"
             res = render(request,self.get_template(),{"pageList":self.page_list,"form":self.form})
         else:
-            print("qqqqqqqqqq-----------------------------")
+          
             for ids in self.form["ids"]:
                 self.page_list = self.get_service().search(self.form)
                 id=int(ids)

@@ -31,8 +31,7 @@ class StudentCtl(BaseCtl):
         self.form["mobileNumber"] = requestForm["mobileNumber"]
         self.form["email"] = requestForm["email"]
         self.form["college_ID"] = requestForm["college_ID"]
-        # self.form["collegeName"] = requestForm["collegeName"]
-
+        
     #Populate Form from Model 
     def model_to_form(self,obj): 
         if (obj == None):
@@ -44,16 +43,13 @@ class StudentCtl(BaseCtl):
         self.form["mobileNumber"] =obj.mobileNumber
         self.form["email"] =obj.email
         self.form["college_ID"] = obj.college_ID
-        # self.form["collegeName"] = obj.collegeName
+      
 
     #Convert form into module
     def form_to_model(self,obj):
         c = CollegeService().get(self.form["college_ID"])
         pk = int(self.form["id"])
         newdate=""
-        # if(self.form["dob"]):
-        #     formDate=self.form["dob"].replace("/", "-")
-        #     newdate=datetime.strptime(formDate,'%d-%m-%Y').strftime('%Y-%m-%d')
         
         if(pk>0):
             obj.id = pk
@@ -63,7 +59,7 @@ class StudentCtl(BaseCtl):
         obj.mobileNumber=self.form["mobileNumber"] 
         obj.email=self.form["email"] 
         obj.college_ID=self.form["college_ID"] 
-        # obj.role_Name=r.name
+       
         obj.collegeName=c.collegeName 
         return obj
 
@@ -95,10 +91,7 @@ class StudentCtl(BaseCtl):
             inputError["college_ID"] = "college_ID can not be null"
             self.form["error"] = True
 
-        # if(DataValidator.isNull(self.form["collegeName"])):
-        #     inputError["collegeName"] = "college_Name can not be null"
-        #     self.form["error"] = True
-
+        
         return self.form["error"]        
 
     #Display Marksheet page 

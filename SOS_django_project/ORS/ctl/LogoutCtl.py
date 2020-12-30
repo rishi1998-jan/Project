@@ -29,7 +29,7 @@ class LogoutCtl(BaseCtl):
         request.session["user"]=None
         self.form["message"]="Logout Successful"
         res = render(request,self.get_template(),{"form":self.form})
-        #res=redirect('/ORS/Login/')
+       
         return res
 
     def submit(self,request,params={}):
