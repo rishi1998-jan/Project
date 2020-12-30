@@ -8,8 +8,7 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import TimeTable
 from service.forms import TimeTableForm
 from service.service.TimeTableService import TimeTableService
-from rest_framework.parsers import JSONParser
-from service.Serializers import TimeTableSerializers
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
@@ -43,6 +42,11 @@ class TimeTableCtl():
         return JsonResponse({"data":res["data"]})
 
     def search(self,request, params = {}):
+        json_request=json.loads(request.body)
+        if(json_request):
+            params["subjectName"]=json_request.get("subjectName",None)
+            params["semester"]=json_request.get("semester",None)
+            
         service=TimeTableService()
         c=service.search(params)
         res={}

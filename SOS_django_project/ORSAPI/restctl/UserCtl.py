@@ -8,8 +8,7 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import User
 from service.forms import UserForm
 from service.service.UserService import UserService
-from rest_framework.parsers import JSONParser
-from service.Serializers import UserSerializers
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers

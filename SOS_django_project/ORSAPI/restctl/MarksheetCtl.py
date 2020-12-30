@@ -6,8 +6,8 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import Marksheet
 from service.forms import MarksheetForm
 from service.service.MarksheetService import MarksheetService
-from rest_framework.parsers import JSONParser
-from service.Serializers import MarksheetSerializers
+
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
@@ -52,6 +52,10 @@ class MarksheetCtl():
         return JsonResponse({"data":res["data"]})
 
     def search(self,request, params = {}):
+        json_request=json.loads(request.body)
+        if(json_request):
+            params["rollNumber"]=json_request.get("rollNumber",None)
+            
         service=MarksheetService()
         c=service.search(params)
         res={}

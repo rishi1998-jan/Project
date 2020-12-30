@@ -7,8 +7,8 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import Student
 from service.forms import StudentForm
 from service.service.StudentService import StudentService
-from rest_framework.parsers import JSONParser
-from service.Serializers import StudentSerializers
+
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
@@ -42,6 +42,10 @@ class StudentCtl():
         return JsonResponse({"data":res["data"]})
 
     def search(self,request, params = {}):
+        json_request=json.loads(request.body)
+        if(json_request):
+            params["firstName"]=json_request.get("firstName",None)
+            
         service=StudentService()
         c=service.search(params)
         res={}

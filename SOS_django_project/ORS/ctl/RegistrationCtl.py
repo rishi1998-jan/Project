@@ -117,7 +117,7 @@ class RegistrationCtl(BaseCtl):
             self.model_to_form(r)
         res = render(request,self.get_template(), {"form":self.form,"roleList":self.preloadData})
         return res
-
+ 
     #Submit Role page 
     def submit(self,request,params={}):
         duplicat=self.get_service().get_login_id(self.form["login_id"])

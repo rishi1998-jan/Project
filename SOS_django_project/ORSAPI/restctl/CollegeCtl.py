@@ -7,9 +7,7 @@ from django.shortcuts import render
 from ORSAPI.utility.DataValidator import DataValidator
 from service.models import College
 from service.forms import CollegeForm
-from service.service.CollegeService import CollegeService
-from rest_framework.parsers import JSONParser
-from service.Serializers import CollegeSerializers
+from service.service.CollegeService import CollegeService 
 from django.http.response import JsonResponse
 import json
 from django.core import serializers   
@@ -41,7 +39,7 @@ class CollegeCtl(BaseCtl):
         service=CollegeService()
         c=service.get(params["id"])
         res={}
-        if(c!=None):
+        if(c!=None): 
             service.delete(params["id"])
             res["data"]=c.to_json()
             res["error"]=False
@@ -55,8 +53,8 @@ class CollegeCtl(BaseCtl):
    
     def search(self,request, params = {}):
         json_request=json.loads(request.body)
-        params["collegeName"]=json_request["collegeName"]
-        params["collegeName"]=json_request["collegeName"]
+        if(json_request):
+            params["collegeName"]=json_request.get("collegeName",None)
         service=CollegeService()
         c=service.search(params)
         res={}

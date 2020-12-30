@@ -19,8 +19,8 @@ from ORSAPI.restctl.SubjectCtl import SubjectCtl
 from ORSAPI.restctl.SubjectListCtl import SubjectListCtl
 from ORSAPI.restctl.TimeTableCtl import TimeTableCtl
 from ORSAPI.restctl.TimeTableListCtl import TimeTableListCtl
-from ORSAPI.restctl.AddFacultyCtl import AddFacultyCtl
-from ORSAPI.restctl.AddFacultyListCtl import AddFacultyListCtl
+from ORSAPI.restctl.FacultyCtl import FacultyCtl
+from ORSAPI.restctl.FacultyListCtl import FacultyListCtl
 
 from ORSAPI.restctl.LoginCtl import LoginCtl
 

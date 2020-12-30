@@ -8,8 +8,8 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import Role
 from service.forms import RoleForm
 from service.service.RoleService import RoleService
-from rest_framework.parsers import JSONParser
-from service.Serializers import RoleSerializers
+
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
@@ -43,6 +43,10 @@ class RoleCtl():
         return JsonResponse({"data":res["data"]})
 
     def search(self,request, params = {}):
+        json_request=json.loads(request.body)
+        if(json_request):
+            params["name"]=json_request.get("name",None)
+            
         service=RoleService()
         c=service.search(params)
         res={}
@@ -58,6 +62,7 @@ class RoleCtl():
             res["message"]="record not found"
         return JsonResponse({"data":res})
 
+        
     def form_to_model(self,obj,request):
         pk = int(request["id"])
         if(pk>0):

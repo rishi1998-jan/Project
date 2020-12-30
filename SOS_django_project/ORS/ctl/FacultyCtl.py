@@ -6,7 +6,7 @@ from django.shortcuts import render
 from ORS.utility.DataValidator import DataValidator
 from service.models import Faculty
 from service.forms import FacultyForm
-from service.service.AddFacultyService import AddFacultyService
+from service.service.FacultyService import FacultyService
 from service.service.SubjectService import SubjectService
 from service.service.CollegeService import CollegeService
 from service.service.CourseService import CourseService
@@ -163,4 +163,4 @@ class FacultyCtl(BaseCtl):
     # Service of Role
 
     def get_service(self):
-        return AddFacultyService()
+        return FacultyService()

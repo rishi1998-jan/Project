@@ -8,8 +8,7 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import Subject
 from service.forms import SubjectForm
 from service.service.SubjectService import SubjectService
-from rest_framework.parsers import JSONParser
-from service.Serializers import SubjectSerializers
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
@@ -43,6 +42,11 @@ class SubjectCtl():
         return JsonResponse({"data":res["data"]})
 
     def search(self,request, params = {}):
+        json_request=json.loads(request.body)
+        if(json_request):
+            params["subjectName"]=json_request.get("subjectName",None)
+            
+            
         service=SubjectService()
         c=service.search(params)
         res={}

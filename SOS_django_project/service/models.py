@@ -191,7 +191,7 @@ class Subject(models.Model):
        "id":self.id,
        "subjectName":self.subjectName,
        "subjectDescription":self.subjectDescription,
-    #    "dob":self.dob,
+  
        "course_ID":self.course_ID,
        "courseName":self.courseName
         }

@@ -11,7 +11,7 @@ class EmailMessage:
         self.to= []
         self.cc= []
         self.bcc= []
-        self.subject= ""
+        self.subject= "" 
         self.text= ""
         self.type= "html"
         self.attachement=[]

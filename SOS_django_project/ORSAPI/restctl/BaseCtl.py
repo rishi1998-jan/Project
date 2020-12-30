@@ -30,26 +30,6 @@ class BaseCtl(ABC):
         print("This is preload")
 
     '''
-    execute method is executed for each HTTP request.  
-    It in turn calls display() or submit() method for 
-    HTTP GET and HTTP POST methods 
-    '''
-    def execute(self,request, params = {}):
-        print("This is execute")
-        self.preload(request)
-        if("GET" ==  request.method):
-            return self.display(request, params) 
-        elif ("POST" ==  request.method):
-            self.request_to_form(request.POST)
-            if(self.input_validation()):
-                return render(request,self.get_template(),{"form":self.form})
-            else:
-                return self.submit(request,params) 
-        else:
-            message = "Request is not supported"
-            return HttpResponse(message)          
-
-    '''
     Displays rceord of received ID    
     '''
     def display(self,request,params = {}):

@@ -12,7 +12,7 @@ class EmailBuilder:
         msg=""
         msg+="<HTML><BODY>"
         msg+="registration is Successul for ors project"
-        msg+="<H1>Hi! Greetings from SunilOS!</H1>"
+        msg+="<H1>Hi! Greetings from SunilOS!</H1>" 
         msg+="<P>Congratulations for registering on ORS! You can now access your ORS account online - anywhere, anytime and enjoy the flexibility to check the Marksheet Details.</P>"
         msg+="<P>Log in today at <a href='http://ors.sunraystechnologies.com'>http://ors.sunraystechnologies.com</a> with your following credentials:</P>"
         msg+="<p><b> Login Id: "+params["login"] +"<br>"+ " Password: "+params["password"]+ "</b></p>"

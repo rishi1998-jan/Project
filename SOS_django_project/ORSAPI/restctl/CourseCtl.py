@@ -8,8 +8,8 @@ from ORSAPI.utility.DataValidator import DataValidator
 from service.models import Course
 from service.forms import CourseForm
 from service.service.CourseService import CourseService
-from rest_framework.parsers import JSONParser
-from service.Serializers import CourseSerializers
+
+
 from django.http.response import JsonResponse
 import json
 from django.core import serializers
@@ -45,21 +45,23 @@ class CourseCtl(BaseCtl):
     
 
     def search(self,request, params = {}):
-            print("my name is mohit")
-            service=CourseService()
-            c=service.search(params)
-            res={}
-            data=[]
-            for x in c:
-                data.append(x.to_json())
-            if(c!=None):
-                res["data"]=data
-                res["error"]=False
-                res["message"]="Data is found"
-            else:
-                res["error"]=True
-                res["message"]="record not found"
-            return JsonResponse({"data":res})
+        json_request=json.loads(request.body)
+        if(json_request):
+            params["courseName"]=json_request.get("courseName",None)
+        service=CourseService()
+        c=service.search(params)
+        res={}
+        data=[]
+        for x in c:
+            data.append(x.to_json())
+        if(c!=None):
+            res["data"]=data
+            res["error"]=False
+            res["message"]="Data is found"
+        else:
+            res["error"]=True
+            res["message"]="record not found"
+        return JsonResponse({"data":res})
 
     def form_to_model(self,obj,request):
         pk = int(request["id"])

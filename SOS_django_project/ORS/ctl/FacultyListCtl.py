@@ -6,7 +6,7 @@ from django.shortcuts import render
 from ORS.utility.DataValidator import DataValidator
 from service.models import Faculty
 from service.forms import FacultyForm
-from service.service.AddFacultyService import AddFacultyService
+from service.service.FacultyService import FacultyService
 
 class FacultyListCtl(BaseCtl):
          
@@ -50,7 +50,7 @@ class FacultyListCtl(BaseCtl):
         # Service of Role
 
     def get_service(self):
-        return AddFacultyService()
+        return FacultyService()
 
 
     def deleteRecord(self,request,params={}):

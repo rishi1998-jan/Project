@@ -9,7 +9,7 @@ from .BaseService import BaseService
 '''
 It contains Student business logics.
 '''
-class AddFacultyService(BaseService):
+class FacultyService(BaseService):
     def search(self,params):
         q = self.get_model().objects.filter()
 
